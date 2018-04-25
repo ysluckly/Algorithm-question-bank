@@ -1,0 +1,56 @@
+Problem Description：
+Hey, welcome to HDOJ(Hangzhou Dianzi University Online Judge).
+In this problem, your task is to calculate SUM(n) = 1 + 2 + 3 + ... + n.
+
+Input
+The input will consist of a series of integers n, one integer per line.
+
+Output
+For each case, output SUM(n) in one line, followed by a blank line. You may assume the result will be in the range of 32-bit signed integer.
+Sample Input
+1
+100
+
+Sample Output
+1
+5050
+
+【解题思路】
+通常我们惯用的方法可能就是：我们是使用公式来计算的，因为这个求和和高中就学过的等差数列求和一样，打眼一看就知道使用公式,代码如下：
+#include <stdio.h>  
+int main()  
+{  
+    int a = 0,sum=0;  
+    while(scanf("%d",&a)!=EOF)  
+    {  
+    sum=(a*(a+1))/2;  
+    printf("%d\n",sum);   
+    } 
+    return 0;
+}  
+总体感觉此题解出来了，毫无缺点。但是，这在submit之后总是被Wrong Answer掉。
+
+一次次Wrong Answer搞的想砸电脑。纠结了半天之后开始仔细看要求，发现有这么一句重要的话被我或略掉了：
+
+You may assume the result will be in the range of 32-bit signed integer. 你可以假设结果将在32位符号整数的范围内。
+
+原来这有限制条件，我之前完全忽略了。再重新检查一下我自己写的代码。我发现应该就是公式给用错。虽然sum=(a*(a+1))/2一定在32位整数范围内，但是
+
+a*(a+1)却很容易造成溢出，超出范围于是把代码重新改了一下，重新submit，结果终于被Accept。
+
+代码如下：
+
+#include <stdio.h>  
+int main()  
+{  
+    int a = 0,sum = 0;  
+    while(scanf("%d",&a)!=EOF)  
+    {  
+        if(a%2==0)  
+            sum=a/2*(a+1);//先除以2，就可以降低溢出的可能性   
+         else  
+            sum=(a+1)/2*a;  
+        printf("%d\n",sum);  
+    }  
+    return 0;  
+}  
