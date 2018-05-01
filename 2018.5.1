@@ -1,0 +1,64 @@
+【问题】求N内的素数
+ 
+【 筛选法】：
+【解题思路】
+从1开始的、某一范围内的正整数从小到大顺序排列， 1不是素数，首先把它筛掉。剩下的数中选择最小的数是素数，然后去掉它的倍数。依次类推，直到筛子为空时结束。
+ 
+【代码如下】
+#include<stdio.h>
+#include<string.h> //memset函数
+#include<math.h> //sqrt()求平方根
+#define N 10001 //假定N最大值为10000
+int a[N];
+int main() 
+{
+ int n;
+ scanf("%d", &n);
+  
+ memset(a, 0, sizeof(a)); //①初始默认都为素数置为0，不是素数标记1，下面再筛去。
+ int i = 1;
+ a[1] = 1; //1不是素数、将其置1
+  
+ for (i = 2; i < sqrt(n); i++) //i为素数因子，当i等于根号n时，可筛去所有的非素数。
+ {
+  if (0 == a[i]) {//i未标记，则i是素数.
+   int j;
+   for (j = 2; j * i <= n; j++) {//将i的倍数标记
+    a[j*i] = 1;
+   }
+  }
+ }//已将a[1]~a[n]标记完成。
+  
+  
+ for (i = 1; i <= n; i++) { //输出
+  if (!a[i]) printf("%d\n", i);
+ }
+ return 0;
+}
+ 
+【 辗转相除法】：
+【代码如下】
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	int i = 0 ;
+	int n = 0;
+	scanf("%d",&n);
+	for(i = 2;i <= n;i++)
+	{
+		int j = 0;
+		for(j = 2;j<=sqrt(i);j++)
+		{
+			if(0 == i%j)
+			{
+				break; 
+			}
+		}
+		if(j > sqrt(i))
+		{
+			printf("%d ",i);
+		}
+	}
+	return 0;
+ } 
