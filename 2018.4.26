@@ -46,7 +46,7 @@ int main()
     int a = 0,sum = 0;  
     while(scanf("%d",&a)!=EOF)  
     {  
-        if(a%2==0)  
+        if(0==a%2)  
             sum=a/2*(a+1);//先除以2，就可以降低溢出的可能性   
          else  
             sum=(a+1)/2*a;  
