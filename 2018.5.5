@@ -1,0 +1,82 @@
+【问题描述】：
+
+有一个字符数组的内容为:"student a am i",请你将数组的内容改为"i am a student".
+
+要求： 
+不能使用库函数。只能开辟有限个空间（空间个数和字符串的长度无关）。
+
+【算法思路】：
+
+先将整个字符串整体逆置，再以每个单词为对象局部逆置（这时判断条件复杂一些）；这里逆置时，需要一个逆置函数，需要两个参数，首指针和尾指针，由这两个指针锁定一个区域，将里面的字符从头至尾逆置
+
+注意：
+
+（1）最后一次跳出while循环时，相当于*pcur=='\0',所以最后这个单词没有逆置，需要再次调用逆置函数
+
+（2）if(表达式){语句1}语句2；这样的结构，无论if表达式成立与否，语句2都会执行的
+
+【代码如下】：
+
+#include <stdio.h>
+#include <assert.h>
+
+int my_strlen(const char *str)
+{
+	int count = 0;
+	assert(str);
+	while(*str++)
+	{
+		count++;
+	}
+	return count;
+}
+
+void reverse_str(char *left,char *right)
+{
+	assert(left);
+	assert(right);
+	while(left < right)
+	{
+		char temp = *left;
+		*left = *right;
+		*right = temp;
+		left++;
+		right--;
+	}
+}
+
+void reverse(char *str)
+{
+	assert(str);
+	char *left = str;
+	char *right = str + my_strlen(str) - 1;
+	reverse_str(left,right);	
+}
+
+int main()
+{
+
+	char arr[] = "student a am i";
+	printf("请逆转每个单词:%s\n\n",arr);
+	char *pcur = arr; 
+	//逆序字符串 
+	reverse(arr);
+	//逆序单词
+	while(*pcur)
+	{
+		char *start = pcur;
+		while(*pcur != ' '&&*pcur != '\0')
+		{
+		    pcur++;
+		}
+		reverse_str(start,pcur-1);
+		if(*pcur == ' ')
+		    pcur++;	    
+	}
+	printf("逆转后的结果：\n");	
+	puts(arr);
+	return 0;
+ } 
+
+不正之处，望多多指正！
+
