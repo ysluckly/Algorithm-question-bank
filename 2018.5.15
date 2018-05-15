@@ -1,0 +1,96 @@
+/*使用可变参数，实现函数，求函数参数的平均值。*/
+1.
+#include<stdio.h>
+#include<windows.h>
+#include<stdarg.h>
+
+int average(int n, ...)
+{
+    va_list arg;
+    va_start(arg, n);
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+       sum += va_arg(arg, int);
+      
+    }
+    return sum/n;
+    va_end(arg);
+}
+
+int main()
+{
+    int a = 10;
+    int b = 23;
+    int c = 56;
+    int d = 25;
+    printf("%d , %d，%d\n", a, b, average(2, a, b));
+    printf("%d , %d , %d，%d\n", a, b, c, average(3, a, b, c));
+    printf("%d , %d , %d , %d，%d\n", a, b, c, d, average(4, a, b, c, d));
+    system("pause");
+    return 0;
+}
+/*  
+C语言代码-可变参数（2）求最大值*/
+#include<stdio.h>
+#include<windows.h>
+#include<stdarg.h>
+
+int Max(int n, ...)
+{
+    va_list arg;
+    va_start(arg, n);
+    int max = va_arg（arg，int）；
+    for (int i = 1; i < n; i++)
+    {
+        int other = va_arg（arg，int）；
+        if (other > max)
+        {
+            max =  other；
+        }
+    }
+    return max;
+    va_end(arg);
+}
+
+int main()
+{
+    int a = 10;
+    int b = 23;
+    int c = 56;
+    int d = 25;
+    printf("%d , %d ，%d\n", a, b, max(2, a, b));
+    printf("%d , %d , %d ， %d\n", a, b, c, max(3, a, b, c));
+    printf("%d , %d , %d , %d  ， %d\n", a, b, c, d, max(4, a, b, c, d));
+    system("pause");
+    return 0;
+}
+ 
+/*要求： 
+模拟实现printf函数，可完成下面的功能 
+能完成下面函数的调用。 
+print(“s ccc d.\n”,”hello”,’b’,’i’,’t’，100); 
+函数原型： 
+print(char *format, …)*/ 
+#include<stdio.h>
+#include<windows.h>
+#include<stdarg.h>
+void print(char *format, ...)
+{
+    va_list arg;
+    va_start(arg, format);
+    printf("%s ",va_arg(arg, char*));
+    printf("%c", va_arg(arg, char));
+    printf("%c", va_arg(arg, char));
+    printf("%c ", va_arg(arg, char));
+    printf("%d", va_arg(arg, int));
+    printf("\n");
+    va_end(arg);
+
+}
+int main()
+{
+    print("s ccc d.\n", "hello", 'b', 'i', 't', 100);
+    system("pause");
+    return 0;
+}
