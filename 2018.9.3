@@ -1,0 +1,55 @@
+【题目】:
+一个栈中元素类型为整型，现在想将栈顶到栈底从大到小排序。要求：只能申请一个栈，但可以申请新的变量，不能申请额外的数据结构，如何完成排序。
+
+【思路】:
+ 将要排序的栈记为s，申请的辅助栈记为t，在栈s上执行pop操作，弹出的元素为cur，每次弹出一个元素时，分两种情况：***
+ 
+ 情况一：如果cur小于或等于t中的栈顶元素，则将cur元素直接压入栈t中。
+ 情况二：如果cur大于t中的栈顶元素，则将t的栈顶元素弹出，逐一压入s中，直到cur小于或等于t的栈顶元素为止，再将cur压入t中。
+
+一直执行以上操作，直到s中的全部元素都压入到t中，最后将t中的元素逐一压入s中，即完成排序。
+【参考代码】:
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <stack>
+using namespace std;
+ 
+void sortStack(stack<int>& s)
+{
+	if (s.empty())
+		return;
+	stack<int> tmp;
+	while (!s.empty())
+	{
+		int top = s.top();
+		s.pop();
+		while (!tmp.empty() && top > tmp.top())
+		{
+			s.push(tmp.top());
+			tmp.pop();
+		}
+		tmp.push(top);
+	}
+	while (!tmp.empty())
+	{
+		s.push(tmp.top());
+		tmp.pop();
+	}
+}
+ 
+int main(void)
+{
+	stack<int> s;
+	s.push(4);
+	s.push(2);
+	s.push(5);
+	s.push(6);
+	s.push(1);
+	s.push(8);
+	sortStack(s);
+	
+	system("pause");
+	return 0;
+}
