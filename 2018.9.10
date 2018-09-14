@@ -1,0 +1,20 @@
+//利用位运算实现两个数加法运算
+
+
+#include <stdio.h>
+int Add(int a,int b)
+{
+  if( b ==0) return a;
+  int sum,carry;
+  sum = a^b;
+  carry=(a&b)<<1;
+  Add(sum,carry);
+}
+int main（）
+{
+  
+ int a=19,b=90;
+ int sum = Add(a,b);
+ printf("%d ",sum);
+  return0；
+}

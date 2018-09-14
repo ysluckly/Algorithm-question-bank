@@ -1,0 +1,137 @@
+【题目描述】：
+
+1.实现一个函数，可以左旋字符串中的k个字符。
+
+AABCD左旋一个字符得到ABCDA
+
+AABCD左旋两个字符得到BCDAA
+
+【算法描述】：
+
+方法一：【暴力移位法】
+
+算法思想：用移的步数作为while循环条件(每移1位完了减1)，1位1位的移动，即只需要一个空的变量来存移出去的字符，而这时变量i已经到了数组最后的空位置，此时把先前移
+
+出去的字符再补回来即可
+
+【 代码如下】：
+ 
+#define _CRT_SECURE_NO_WARNINGS 1  
+#include <stdio.h>  
+#include <assert.h>  
+#include <string.h>  
+  
+void left_move(char *str, int k)  
+{  
+    assert(str);  
+    char temp = 0;  
+    int len = strlen(str);  
+    k = k%len;  
+    while (k--)  
+    {  
+        char *cur = str;  
+        temp = *cur;  
+        while (*(cur + 1) != '\0')  
+        {  
+            *cur = *(cur + 1);  
+            cur++;  
+        }  
+        *cur = temp;  
+    }  
+}  
+  
+int main()  
+{  
+    char arr[] = "abcdef";  
+    int k = 0;  
+    scanf("%d", &k);  
+    left_move(arr, k);  
+    printf("%s", arr);  
+    return 0;  
+}  
+方法二：【三步翻转法】
+
+算法思想：以移动的步数为界限，左边字符串整体逆置，右边字符串整体逆置，再整个字符串整体逆置，即需要调用3次整体逆置字符串函数，要注意各个逆置区间的定义
+
+【 代码如下】：
+
+#define _CRT_SECURE_NO_WARNINGS 1  
+  
+#include<stdio.h>    
+#include<string.h>  
+#include<assert.h>    
+  
+void reverse(char *left, char*right)//逆序    
+{  
+    assert(left&&right);  
+    while (left < right)  
+    {  
+        char tmp;  
+        tmp = *left;  
+        *left = *right;  
+        *right = tmp;  
+        left++,  
+            right--;  
+    }  
+}  
+void reverse_left(char *str, int k)  
+{  
+    int len = 0;  
+    assert(str);  
+    len = strlen(str);  
+    k = k%len;  
+    reverse(str, (str + k - 1));//要旋转的k个字符逆序    
+    reverse((str + k), (str + len - 1));//之后的字符逆序    
+    reverse(str, (str + len - 1));//所有的字符逆序    
+}  
+int main()  
+{  
+    int k = 0;  
+    char str[] = "abcdefgh";  
+    scanf("%d", &k);  
+    reverse_left(str, k);  
+    printf("%s", str);  
+    return 0;  
+}  
+
+方法三：
+
+算法思想：(相当于穷举法)申请一个是原来2倍+1(算上\0)的数组空间，将原来的字符串复制一遍存在这个空间里，然后从原来的首元素加上移动的步数开始输出len个长度的字
+
+符串，完成左旋效果(先后用到strcpy strcat strncpy函数)
+
+注意：
+
+(1)变量定义一定要放在表达式前面，否则乱报错；
+
+(2)用malloc函数申请完空间记得释放，头文件<stdlib.h>
+
+【 代码如下】：
+
+#define _CRT_SECURE_NO_WARNINGS 1  
+  
+#include <stdio.h>    
+#include <string.h>    
+#include <stdlib.h>   
+#include <assert.h>  
+  
+void reverse_string(char *str, int k)  
+{  
+    int len = strlen(str);  
+    char *tmp = (char*)malloc(2 * len + 1); //申请2倍的原数组空间   
+    assert(str);  
+    strcpy(tmp, str);  //把原来的字符串拷贝到这个大空间里    
+    strcat(tmp, str);  //把原来的字符串再拼接到后面(复制2遍)    
+    strncpy(str, tmp + k, len);  //从要移动的位数后一位起，获取原来长度的字符串，达到左旋效果    
+    free(tmp);  
+  
+}  
+int main()  
+{  
+    char arr[] = "abcdef";  
+    int k = 0;  
+    scanf("%d", &k);  
+    reverse_string(arr, k);  
+    printf("%s", arr);  
+    return 0;  
+}  

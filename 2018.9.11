@@ -1,0 +1,108 @@
+
+//共享栈
+
+#include <stdio.h>
+#include <stdlib.h>
+#define MaxSize 60 
+#define OK      1      
+#define ERROR   0      
+#define TRUE    1      
+#define FALSE   0    
+typedef int ElemType;  
+typedef int Status;  
+typedef struct {  
+    ElemType    data[MaxSize];  
+    int         top1;                    
+    int         top2;					
+}Stack,  *pStack;  
+ 
+Status init_Stack(pStack S)
+{
+	S->top1 = -1;
+	S->top2 = MaxSize;
+	return OK;  
+}
+ 
+Status push_Stack(pStack S, ElemType e, int stackNumber)
+{
+	if (S->top1+1 == S->top2)
+		return ERROR;
+	switch(stackNumber)
+	{
+		case 1:		
+				S->data[++S->top1] = e;		
+				break;
+		case 2:		
+				S->data[--S->top2] = e;		
+				break;
+	}
+	return OK;
+}
+ 
+ 
+Status pop_Stack(pStack S, ElemType *e, int stackNumber)
+{
+	if (1 == stackNumber)
+	{	
+		if (-1 == S->top1)		
+			return ERROR;
+		*e = S->data[S->top1--];
+	}
+	else if (2 == stackNumber)
+	{
+		if (MaxSize == S->top2)
+			return ERROR;
+		*e = S->data[S->top2++];
+	}
+	return OK;
+}
+ 
+ 
+Status dis_pStack(pStack S, int stackNumber)
+{
+	int i;
+	if (1 == stackNumber)
+	{
+		if (-1 == S->top1)
+			return ERROR;
+ 
+		printf("栈1中的元素为：\n");
+		for (i=0; i<=S->top1; ++i)
+			printf("%d ", S->data[i]);
+		printf("\n==================================\n");
+	}
+	else if (2 == stackNumber)
+	{
+		if (MaxSize == S->top2)
+			return ERROR;
+		printf("栈2中的元素为：\n");
+		for (i=MaxSize-1; i>=S->top2; --i)	
+			printf("%d ", S->data[i]);
+		printf("\n==================================\n");
+	}
+}
+ 
+int main()
+{
+	printf("======共享栈===========\n\n");
+	Stack S;
+	ElemType e;
+	init_Stack(&S);
+	push_Stack(&S, 1, 1);
+	push_Stack(&S, 2, 1);
+	push_Stack(&S, 3, 1);
+	push_Stack(&S, 4, 1);
+	push_Stack(&S, 5, 1);
+	push_Stack(&S, 6, 1);
+	pop_Stack(&S, &e, 1);
+	push_Stack(&S, 10, 2);
+	push_Stack(&S, 9, 2);
+	push_Stack(&S, 8, 2);
+	push_Stack(&S, 7, 2);
+	dis_pStack(&S, 1);
+	dis_pStack(&S, 2);
+	return 0;
+}
+ 
+ 
+ 

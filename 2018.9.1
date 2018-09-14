@@ -1,0 +1,40 @@
+//将空格替换为“%20”
+
+void RePlaceBlank(char* string, int lenth)
+{	
+	//lenth表示容量
+	if (string == NULL || lenth <= 0)
+	{
+		return;
+	}
+	//len 表示实际长度，count表示空格个数
+	int count = 0;
+	int len = 0;
+	int i = 0;
+	while (string[i] != '\0')
+	{
+		len++;
+		if (string[i] == ' ')
+			count++;
+		i++;
+	}
+	int newlen = len + count * 2;
+	if (newlen > lenth)
+		return;
+	int p1 = newlen;
+	int p2 = len;
+	while (p1 > p2&&p2 >= 0)
+	{
+		if (string[p2] == ' ')
+		{
+			string[p1--] = '0';
+			string[p1--] = '2';
+			string[p1--] = '%';
+		}
+		else
+		{
+			string[p1--] = string[p2];
+		}
+		p2--;
+	}
+}

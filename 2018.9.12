@@ -1,0 +1,36 @@
+//输入不超过1000的正整数n，输出n!=1*2*3*……*n的精确结果。
+样例输入：30
+样例输出：265252859812191058636308480000000
+
+#include<stdio.h>
+#include<string.h>
+const int MAXN = 3000;
+int f[MAXN];
+int main()
+{
+    int i, j, n;
+    scanf("%d", &n); 
+    memset(f, 0, sizeof(f));
+    f[0]=1;
+    for(i = 2; i <= n; i++)
+    {
+        int c = 0;
+        for(j = 0; j < MAXN; j++)
+        {
+            int s = f[j] * i + c;
+            f[j] = s % 10;
+            c = s/10;
+        }
+    }
+    for(j = MAXN-1; j >= 0; j--)
+    {
+        if(f[j])
+            break;
+    }
+    for(i = j; i >= 0; i--)
+    {
+        printf("%d", f[i]);
+    }
+    printf("\n");
+    return 0;
+}

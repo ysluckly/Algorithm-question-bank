@@ -38,7 +38,7 @@ You may assume the result will be in the range of 32-bit signed integer. 你可�
 
 a*(a+1)却很容易造成溢出，超出范围于是把代码重新改了一下，重新submit，结果终于被Accept。
 
-代码如下：
+【 代码如下】：
 
 #include <stdio.h>  
 int main()  
@@ -54,3 +54,4 @@ int main()
     }  
     return 0;  
 }  
+
