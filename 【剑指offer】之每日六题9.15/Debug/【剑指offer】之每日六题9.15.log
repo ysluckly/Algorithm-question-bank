@@ -1,0 +1,37 @@
+﻿生成启动时间为 2018/9/16 21:44:17。
+     1>项目“F:\HomeWork\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\【剑指offer】之每日六题9.15.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt jianzhioffer.c
+         jianzhioffer.c
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(12): warning C4013: “assert”未定义；假设外部返回 int
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(14): error C2057: 应输入常量表达式
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(14): error C2466: 不能分配常量大小为 0 的数组
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(14): error C2133: “ageTmp”: 未知的大小
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(15): warning C4013: “memset”未定义；假设外部返回 int
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(15): warning C4034: sizeof 返回 0
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(21): warning C4013: “printf”未定义；假设外部返回 int
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(22): warning C4013: “exit”未定义；假设外部返回 int
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(62): warning C4013: “OrderSearch”未定义；假设外部返回 int
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(89): error C2146: 语法错误: 缺少“)”(在标识符“n”的前面)
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(89): error C2061: 语法错误: 标识符“n”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(89): error C2059: 语法错误:“;”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(89): error C2059: 语法错误:“)”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(90): error C2449: 在文件范围内找到“{”(是否缺少函数头?)
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(92): error C2059: 语法错误:“}”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(105): error C2146: 语法错误: 缺少“)”(在标识符“n”的前面)
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(105): error C2061: 语法错误: 标识符“n”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(105): error C2059: 语法错误:“;”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(105): error C2059: 语法错误:“)”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(106): error C2449: 在文件范围内找到“{”(是否缺少函数头?)
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(129): error C2059: 语法错误:“}”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(168): error C2084: 函数“int NumberOf1(int)”已有主体
+                 f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(155) : 参见“NumberOf1”的前一个定义
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(179): error C2061: 语法错误: 标识符“Solution”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(179): error C2059: 语法错误:“;”
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(180): error C2449: 在文件范围内找到“{”(是否缺少函数头?)
+     1>f:\homework\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\jianzhioffer.c(247): error C2059: 语法错误:“}”
+     1>已完成生成项目“F:\HomeWork\比特_数据结构\【剑指offer】集\【剑指offer】之每日六题9.15\【剑指offer】之每日六题9.15.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:01.99
