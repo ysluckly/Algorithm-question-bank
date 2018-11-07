@@ -8,7 +8,7 @@ int lup[2*N+1];// 左上至右下是否有皇后
 int queen[N+1]={0}; 
 int num;// 解答编号
 void backtrack(int);// 递回求解
-int main(void)
+int main()
 {
 	int i ;
 	num = 0;
